@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trading Spheres
+
+A modern marketing website for Trading Spheres built with Next.js 16 and Tailwind CSS v4. The app showcases trading programs, founder information, community sponsorships, and WhatsApp-based enrollment.
+
+## Key Features
+
+- Landing page with responsive course/program cards
+- Dedicated About page for founder details and sponsorship announcements
+- Smooth animated interactions via `framer-motion`
+- Floating WhatsApp call-to-action for instant enrollment
+- Blog section with Sanity CMS integration and local fallback content
+- Custom glassmorphism UI styling and gold accent theme
+
+## Tech Stack
+
+- Next.js 16.2.3
+- React 19.2.4
+- Tailwind CSS v4
+- TypeScript 5
+- Framer Motion
+- Sanity content integration via `next-sanity`
+- Lucide React icons
 
 ## Getting Started
 
-First, run the development server:
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run in development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file at the project root if you want to configure the WhatsApp and Sanity integration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Example values:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+NEXT_PUBLIC_WHATSAPP_NUMBER=919464807614
+NEXT_PUBLIC_WHATSAPP_MESSAGE=Hi%2C%20I%20want%20to%20enroll%20in%20Trading%20Spheres
+NEXT_PUBLIC_SANITY_PROJECT_ID=trading-spheres-v1
+NEXT_PUBLIC_SANITY_DATASET=production
+```
 
-## Deploy on Vercel
+> Note: If the Sanity dataset is unavailable, the blog section uses fallback posts so the site still renders normally.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/page.tsx` — homepage layout
+- `src/app/about/page.tsx` — founder/about page
+- `src/components` — reusable UI sections and widgets
+- `src/lib/constants.ts` — site content, pricing, and fallback data
+- `src/lib/sanity.ts` — Sanity client configuration
+- `src/app/globals.css` — global styling and custom Tailwind utilities
+
+## Customizations
+
+- Update program pricing and course cards in `src/components/CoursesSection.tsx`
+- Edit founder biography in `src/app/about/page.tsx`
+- Change WhatsApp enrollment link in `src/components/EnrollButton.tsx`
+- Update footer contact details in `src/components/Footer.tsx`
+
+## Deployment
+
+This app is ready for deployment on Vercel, Netlify, or any Node-compatible hosting provider.
+
+- Use `npm run build` to create a production build
+- Use `npm run start` to serve the optimized build
+
+## Notes
+
+- Sanity integration currently depends on environment variables and an accessible dataset.
+- The site includes animated effects and responsive layouts for both mobile and desktop.
+
+---
+
+Built for Trading Spheres by the Trading Spheres development team.
