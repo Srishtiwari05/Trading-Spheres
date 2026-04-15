@@ -9,7 +9,7 @@ type SanityClientLike = {
   fetch: <T = any>(query: string, params?: Record<string, unknown>) => Promise<T>;
 };
 
-export const client: SanityClientLike = sanityEnabled
+export const client = (sanityEnabled
   ? createClient({
       projectId,
       dataset,
@@ -18,4 +18,4 @@ export const client: SanityClientLike = sanityEnabled
     })
   : {
       fetch: async <T = any>() => [] as unknown as T,
-    };
+    }) as any;
