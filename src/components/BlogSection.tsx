@@ -5,7 +5,7 @@ import { urlFor } from "@/lib/sanity-image";
 import { FALLBACK_BLOG_POSTS } from "@/lib/constants";
 
 async function getPosts() {
-  return await (client as any).fetch(`*[_type == "post"] | order(publishedAt desc)[0...3]{
+  return await client.fetch(`*[_type == "post"] | order(publishedAt desc)[0...3]{
     _id,
     title,
     slug,
