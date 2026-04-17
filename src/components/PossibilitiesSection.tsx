@@ -32,8 +32,7 @@ export default function PossibilitiesSection() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-black text-white font-outfit mb-16"
         >
-          One Platform, <br />
-          <span className="text-[#00f59b]">Infinite Trading Possibilities</span>
+          A single platform for smarter market moves
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8 mb-20">
