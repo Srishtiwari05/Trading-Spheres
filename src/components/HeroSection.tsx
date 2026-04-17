@@ -21,10 +21,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative inline-block"
+          className="relative inline-flex flex-wrap justify-center"
         >
           <div className="absolute -inset-4 bg-gradient-to-r from-[#00f5ff]/20 to-[#b026ff]/20 blur-2xl rounded-full opacity-50" />
-          <span className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium text-white mb-8">
+          <span className="relative inline-flex flex-wrap justify-center items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs sm:text-sm font-medium text-white mb-8 max-w-[90vw]">
             <span className="w-2 h-2 rounded-full bg-[#00f5ff] animate-pulse" />
             The Future of Trading Education
           </span>
@@ -45,7 +45,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl font-inter leading-relaxed"
         >
-          Master the markets with institutional strategies, live mentorship, and a community built for serious wealth creation. Stop guessing, start executing.
+          Learn real strategies, trade with discipline, and execute with confidence.
         </motion.p>
 
         <motion.div
