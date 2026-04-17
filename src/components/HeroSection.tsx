@@ -36,11 +36,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="text-5xl md:text-7xl lg:text-8xl font-black text-white max-w-5xl font-outfit leading-[1.05] tracking-tighter"
         >
-          Unlock the Trader <br className="hidden md:block" />
-          <span className="relative">
-            You're <span className="neon-text">Meant to Be</span>
-            <svg className="absolute w-full h-4 -bottom-2 left-0 text-[#00f5ff] opacity-60" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00034 6.78693C55.0864 1.94421 123.633 -1.25845 197.669 7.15176" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/></svg>
-          </span>
+          Elevate Your Trading Beyond Instinct
         </motion.h1>
 
         <motion.p
