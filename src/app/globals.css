@@ -39,7 +39,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-outfit;
+    font-family: var(--font-outfit), sans-serif;
   }
 }
 
@@ -79,6 +79,7 @@
     padding: 1px;
     background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -133,11 +134,15 @@
 
 .btn-gold {
   background: var(--gold-gradient);
-  @apply text-black font-bold transition-all duration-300;
+  color: #000000;
+  font-weight: 700;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
 .btn-gold:hover {
-  @apply scale-105;
+  transform: scale(1.05);
   box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
 }
