@@ -27,7 +27,7 @@ export default function LearnSection() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold text-center text-white font-outfit uppercase tracking-widest"
         >
-          What are you going to <span className="text-[#00f59b]">learn?</span>
+          Your path to <span className="text-[#00f59b]">market mastery</span>
         </motion.h2>
       </div>
 

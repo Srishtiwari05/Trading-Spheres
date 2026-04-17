@@ -15,8 +15,7 @@ export default function UniqueSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black font-outfit leading-tight mb-6"
           >
-            What Makes Us Unique <br />
-            Makes You <span className="text-[#00f59b] bg-black px-4 py-1 inline-block">Profitable</span>
+            <span className="text-[#00f59b] bg-black px-4 py-1 inline-block">Trade with confidence. Grow consistently.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -25,8 +24,8 @@ export default function UniqueSection() {
             transition={{ delay: 0.2 }}
             className="text-gray-600 text-lg uppercase font-bold tracking-[0.2em] leading-relaxed"
           >
-            No Hype. No Bull. Just Trading that works. <br />
-            Learn what actually moves the market and become part of our elite community.
+            No hype. No guesswork. Only proven setups, real market context, and practical rules you can use today. <br />
+            Master the forces behind price moves and join a community that trades with discipline.
           </motion.p>
         </div>
 
