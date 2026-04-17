@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import EnrollButton from "./EnrollButton";
+import { ArrowUpRight, Zap } from "lucide-react";
 
 const courses = [
   {
@@ -13,6 +12,8 @@ const courses = [
     price: "₹14,999",
     desc: "Begin with a complete, structured trading foundation for consistent growth.",
     features: ["SMC system introduction", "Live trading support", "Community access", "Mentorship guidance"],
+    color: "from-[#00f5ff]/10 to-transparent",
+    accent: "text-[#00f5ff]"
   },
   {
     name: "Flagship Program",
@@ -22,6 +23,8 @@ const courses = [
     desc: "Best for serious traders looking for a full market system and funded-account strategy.",
     badge: "⭐ MOST POPULAR",
     features: ["Complete SMC system", "Live classes", "Community + mentorship", "Funded account strategy"],
+    color: "from-gold/20 to-transparent",
+    accent: "text-gold"
   },
   {
     name: "Online Program",
@@ -30,6 +33,8 @@ const courses = [
     price: "₹24,999",
     desc: "A focused online program designed to improve your edge in fast-moving markets.",
     features: ["Live training", "Strategy playbooks", "Weekly Q&A", "Ongoing support"],
+    color: "from-[#b026ff]/10 to-transparent",
+    accent: "text-[#b026ff]"
   },
   {
     name: "1-on-1 Mentorship",
@@ -38,79 +43,91 @@ const courses = [
     price: "Online ₹89,999 / Offline ₹99,999",
     desc: "For serious wealth builders seeking personal guidance and a custom trading strategy.",
     features: ["Personal guidance", "Custom strategy", "Live performance reviews", "Account growth roadmap"],
+    color: "from-white/10 to-transparent",
+    accent: "text-white"
   },
 ];
 
 export default function CoursesSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 340;
-      scrollRef.current.scrollBy({ left: direction === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="courses" className="py-24 px-4 bg-black">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+    <section id="courses" className="py-32 px-4 bg-transparent relative">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-center mb-16 font-outfit"
+          className="text-center mb-24"
         >
-          Specialized <span className="gold-text">Trading Courses</span>
-        </motion.h2>
-
-        <div className="relative group">
-          <button onClick={() => scroll("left")} className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full text-white hover:text-gold transition-all duration-300 shadow-2xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100">
-            <ChevronLeft size={28} />
-          </button>
-          <button onClick={() => scroll("right")} className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full text-white hover:text-gold transition-all duration-300 shadow-2xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100">
-            <ChevronRight size={28} />
-          </button>
-
-          <div
-            ref={scrollRef}
-            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 px-4"
-          >
-            {courses.map((course, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="min-w-[300px] md:min-w-[400px] snap-start glass-card rounded-3xl p-8 border border-white/5 flex flex-col gold-border-glow hover:bg-white/[0.03] transition-colors"
-              >
-                <div className="flex justify-between items-start mb-6 gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold font-outfit leading-tight">{course.name}</h3>
-                    {course.badge ? <p className="mt-2 text-sm text-[#ffc107] font-semibold uppercase tracking-[0.2em]">{course.badge}</p> : null}
-                  </div>
-                  <span className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full ${course.type === "Online" ? "bg-blue-500/10 text-blue-400 border border-blue-500/20" : course.type === "Mentorship" ? "bg-purple-500/10 text-purple-400 border border-purple-500/20" : "bg-green-500/10 text-green-400 border border-green-500/20"}`}>
-                    {course.type}
-                  </span>
-                </div>
-                <p className="text-gray-400 text-sm mb-8 leading-relaxed line-clamp-2">{course.desc}</p>
-                <div className="mt-auto">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-gray-500 text-xs font-bold uppercase tracking-widest flex items-center gap-2">⏱ {course.duration}</span>
-                    <span className="text-2xl font-bold gold-text font-outfit">{course.price}</span>
-                  </div>
-                  {course.features?.length ? (
-                    <ul className="space-y-2 mb-6 text-gray-400 text-sm">
-                      {course.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 before:content-['•'] before:text-[#00f59b] before:text-base">{feature}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  <EnrollButton courseName={course.name} className="w-full btn-gold py-4 text-sm" />
-                </div>
-              </motion.div>
-            ))}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold uppercase tracking-widest mb-6">
+            <Zap size={14} className="text-[#00f5ff]" /> Elite Pathways
           </div>
+          <h2 className="text-4xl md:text-6xl font-black font-outfit leading-tight">
+            Specialized <span className="neon-text">Trading</span> Programs
+          </h2>
+          <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg block">
+            Designed for serious individuals ready to transcend retail trading and adopt an institutional edge.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col gap-16 pb-16">
+          {courses.map((course, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="w-full"
+            >
+              {/* Card Container layered effect */}
+              <div 
+                className="glass-card rounded-[2rem] p-8 md:p-12 border border-white/10 futuristic-border relative overflow-hidden group hover:border-white/20 transition-all duration-500 shadow-2xl"
+                style={{ backgroundColor: 'var(--dark-surface)' }}
+              >
+                {/* Background gradient hint */}
+                <div className={`absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-l ${course.color} opacity-30 pointer-events-none`} />
+
+                <div className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-12 justify-between">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-4 mb-4">
+                      <h3 className="text-3xl md:text-4xl font-black font-outfit">{course.name}</h3>
+                      {course.badge && (
+                        <span className="px-3 py-1 bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest rounded-full border border-gold/20">
+                          {course.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-xl">{course.desc}</p>
+                    
+                    <div className="grid grid-cols-2 gap-y-4 gap-x-8 mb-8 text-sm font-medium text-gray-300">
+                      {course.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <div className={`w-1.5 h-1.5 rounded-full ${course.accent.replace('text', 'bg')}`} />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="md:w-72 flex flex-col justify-end bg-black/40 p-6 md:p-8 rounded-3xl border border-white/5">
+                    <div className="mb-6">
+                      <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">Duration</p>
+                      <p className="text-lg font-bold">{course.duration}</p>
+                    </div>
+                    <div className="mb-8">
+                      <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">Investment</p>
+                      <p className={`text-3xl font-black font-outfit ${course.accent}`}>{course.price}</p>
+                    </div>
+                    <EnrollButton courseName={course.name} className="w-full relative group btn-gold py-4 rounded-xl overflow-hidden text-sm">
+                      <span className="relative z-10 flex items-center justify-center gap-2 font-bold uppercase tracking-wider">
+                        Enroll Now <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </span>
+                    </EnrollButton>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

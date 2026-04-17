@@ -14,13 +14,23 @@
 
 :root {
   --gold-gradient: linear-gradient(135deg, #f5d76e 0%, #d4af37 50%, #876822 100%);
-  --glass-bg: rgba(13, 13, 13, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --neon-cyan: #00f5ff;
+  --neon-purple: #b026ff;
+  --neon-gradient: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+  --glass-bg: rgba(18, 18, 24, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --dark-bg: #07070a;
+  --dark-surface: #0f0f15;
 }
 
 @layer base {
   body {
-    @apply bg-black text-white font-inter;
+    background-color: var(--dark-bg);
+    background-image: 
+      radial-gradient(ellipse at top, rgba(20, 20, 35, 0.8), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(0, 245, 255, 0.03), transparent 40%);
+    color: #e2e8f0;
+    font-family: var(--font-inter), sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -42,16 +52,41 @@
     background-clip: text;
   }
 
+  .neon-text {
+    background: var(--neon-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+
   .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .futuristic-border {
+    position: relative;
+  }
+  .futuristic-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   .gold-border-glow {
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
   }
 
   .scrollbar-hide::-webkit-scrollbar {
