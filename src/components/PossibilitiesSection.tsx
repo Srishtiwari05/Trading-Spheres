@@ -32,7 +32,7 @@ export default function PossibilitiesSection() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-black text-white font-outfit mb-16"
         >
-          A single platform for smarter market moves
+          A single platform for <span className="text-[#00f59b]">smarter market moves</span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8 mb-20">
