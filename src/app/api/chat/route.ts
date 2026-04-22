@@ -13,11 +13,16 @@ export async function POST(req: NextRequest) {
 For enrollment or direct support, always share the WhatsApp link: https://wa.me/${whatsappNumber}. 
 Be concise, warm, and professional.`;
 
+  // Filter out the initial assistant greeting if present
+  const conversationMessages = messages.filter((msg: any, index: number) => 
+    !(index === 0 && msg.role === "assistant")
+  );
+
   const stream = await anthropic.messages.stream({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-sonnet-4-6",
     max_tokens: 1024,
     system: systemPrompt,
-    messages: messages,
+    messages: conversationMessages,
   });
 
   return new Response(stream.toReadableStream());
