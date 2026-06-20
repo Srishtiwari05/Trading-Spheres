@@ -36,6 +36,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site.
+live demo/ deployed: https://www.tradingspheres.com/
 
 ### Build for production
 
